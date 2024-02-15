@@ -1,10 +1,10 @@
- # Note Taking App
+ # scribble
 
 This is a simple note taking app written in Python. It allows users to add, view and clear notes.
 
 ## How to Use
 
-To use the app, simply run the `main.py` file. You will be presented with a menu of options:
+To use the app, simply run `python scribble.py`. You will be presented with a menu of options:
 
 ```
 1. Add a note
