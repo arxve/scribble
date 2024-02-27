@@ -1,6 +1,6 @@
  # scribble
 
-This is a simple note taking app written in Python. It allows users to add, view and clear notes.
+This is a simple note-taking app written in Python. It allows users to add, view and clear notes.
 
 ## How to Use
 
