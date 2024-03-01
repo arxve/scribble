@@ -1,8 +1,7 @@
 import os
 
-NOTES_FILE = "notes.txt" # Notes file name and extension
+NOTES_FILE = "notes.txt"
 
-# Function to display the menu options for the user to interact with
 def display_menu():
     print("\nNote App Menu:")
     print("1. Add a note")
@@ -10,14 +9,18 @@ def display_menu():
     print("3. Clear all notes")
     print("4. Quit")
 
-# Function to add a note to the notes.txt file
 def add_note():
-    note = input("Enter your note: ")
-    with open(NOTES_FILE, "a") as f:
-        f.write(note + "\n")
-    print("Note added successfully!")
+    note = input("Enter your note: ").strip()
+    if note:
+        try:
+            with open(NOTES_FILE, "a") as f:
+                f.write(note + "\n")
+            print("Note added successfully!")
+        except IOError:
+            print("Error: Unable to write to file.")
+    else:
+        print("Error: Note cannot be empty.")
 
-# Function to view notes
 def view_notes():
     try:
         with open(NOTES_FILE, "r") as f:
@@ -31,16 +34,23 @@ def view_notes():
     except FileNotFoundError:
         print("\nNo notes available.")
 
-# Function to clear notes
 def clear_notes():
     try:
         os.remove(NOTES_FILE)
         print("\nAll notes cleared successfully!")
     except FileNotFoundError:
         print("\nNo notes available to clear.")
+    except IOError:
+        print("Error: Unable to clear notes.")
 
-# Main function to run the program
 def main():
+    if not os.path.exists(NOTES_FILE):
+        try:
+            with open(NOTES_FILE, "w"):
+                pass
+        except IOError:
+            print("Error: Unable to create notes file.")
+
     while True:
         display_menu()
         choice = input("Enter your choice: ").strip()
